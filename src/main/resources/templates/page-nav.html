@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<body>
+	<nav th:fragment="page-nav">
+		<ul class="pagination">
+			<li>
+				<span th:if="${page.first}">First-</span>
+				<a th:if="${!page.first}" th:href="@{${page.url}(page = 0)}">First-</a>
+			</li>
+			<li>
+				<span th:if="${!page.hasPrevious}">Prev </span>
+				<a th:if="${page.hasPrevious}" th:href="@{${page.url}(page = ${page.currentPage - 2})}">Prev-</a>
+			</li>
+<!--			<li th:each="item : ${page.pages}">-->
+<!--				<span th:if="${item.current}" th:text="${item.number}"></span>-->
+<!--				<a th:if="${!item.current}" th:href="@{${page.url}(page = ${item.number - 1})}" th:text="${item.number}"></a>-->
+<!--			</li>-->
+			<li>
+				<span th:if="${!page.hasNext}">Next </span>
+				<a th:if="${page.hasNext}" th:href="@{${page.url}(page = ${page.currentPage})}">Next-</a>
+			</li>
+			<li>
+				<span th:if="${page.last}">Last</span>
+				<a th:if="${!page.last}" th:href="@{${page.url}(page = ${page.totalPages - 1})}">Last</a>
+			</li>
+		</ul>
+	</nav>
+</body>
+</html>
